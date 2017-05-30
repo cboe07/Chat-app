@@ -12,5 +12,8 @@
     "socket.io"
   ],
   "author": "Chris Boeckel",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^2.0.1"
+  }
 }
