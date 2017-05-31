@@ -1,8 +1,45 @@
+h4{
+	border: 1px solid black;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+
+#messages, #users{
+	height: 50vh;
+	/* width: 50vw; */
+	border: 5px solid black;
+	border-radius: 10px;
+	margin: 10px;
+}
+
 #messages{
-		height: 50vh;
-		/* width: 50vw; */
-		border: 1px solid black;
-	}
+	padding-top: 5px;
+	overflow: scroll;
+}
+
+#submit-message{
+	padding: 20px;
+}
+
+input{
+	width: 415px;
+}
+#send-message{
+	width: 135px;
+	height: 30px;
+	background-color: #F6F6F6;
+	color: black;
+	outline: none;
+	font-size: 13px;
+}
+
+p{
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: /* #d8d4d4; */   #66e244;
+
+}
 	
 	
 	

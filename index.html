@@ -27,13 +27,13 @@
 
 	
 	<div class="container">
-		<div class="row">
+		<div id="header" class="row text-center">
 			<h1>Chat Room</h1>
 		</div>
 		
-		<div class="row">
+		<div class="row col-sm-offset-1">
 			<div class="col-sm-3" id="users">
-				<h4>Connected Users</h4>
+				<h4 class="text-center">Connected Users</h4>
 				<!-- Users will go in here -->
 			
 			</div>
@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="col-sm-12 text-center">
-				<form id="submit-message">
+				<form id="submit-message" class="col-sm-offset-1">
 					<input type="text" id="new-message">
 					<button type="submit" id="send-message" class="btn btn-primary">
 						Send
@@ -59,13 +59,16 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
 
 
+
+<script type="text/javascript" src="config.js"></script>
+
 <script type="text/javascript">
 	
 	console.log("Browser JavaScript");
 	var name = prompt("What is your name?");
 	// console.log(io);
-	// console.log(window.io);
-	var socketio = io.connect('http://127.0.0.1:8080');
+	console.log(window.io);
+	var socketio = io.connect(socketUrl);
 	// Send an event to the server
 	socketio.emit('nameToServer',name);
 
@@ -77,15 +80,24 @@
 
 	$('#submit-message').submit(function(event){
 		event.preventDefault();
+		
 		var newMessage = $('#new-message').val();
+		var date = new Date(); 
+		var time = date.toLocaleTimeString();           // ADDED
+		
+		// var time = timeU.italiz
+
 		socketio.emit('messageToServer',{
 			newMessage:newMessage,
-			name:name
+			name:name,
+			time:time                                //ADDED
 		});
 	});
 
 	socketio.on('messageToClient',(message)=>{
-		$('#messages').append('<p>'+message+'</p>');
+		// console.log(message);
+		$('#messages').prepend('<p>'+message+'</p>');
+		$('#new-message').val('');                    // Empties search bar
 	})
 
 	// $('#send-message').click(function(){
